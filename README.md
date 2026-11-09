@@ -1,4 +1,4 @@
-# CS6600 Assignment 4
+# CS6600 Assignment Multicore Coherent Pipeline Simulator
 
 A configurable 2D mesh connects private coherent data caches, shared LLC/home
 banks, and memory controllers. Default: 3 x 3 mesh, four cores, four home/LLC
