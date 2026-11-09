@@ -1,0 +1,4 @@
+workloads/core0.pisa
+workloads/core1.pisa
+workloads/idle.pisa
+workloads/idle.pisa

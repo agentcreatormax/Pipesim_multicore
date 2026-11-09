@@ -1,0 +1,9 @@
+.build/
+pa4
+pa4-noc
+__pycache__/
+*.counters.json
+*.observer.json
+*.state.json
+*.results.csv
+*.registers.csv

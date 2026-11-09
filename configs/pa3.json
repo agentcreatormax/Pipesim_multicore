@@ -1,0 +1,91 @@
+{
+  "L1I": {
+    "line_size": 16,
+    "sets": 4,
+    "ways": 2,
+    "mshr_entries": 4,
+    "mshr_waiters_per_entry": 4,
+    "replacement": "tree_plru",
+    "writeback_entries": 0,
+    "writeback_waiters_per_entry": 0,
+    "fill_mode": "complete_line"
+  },
+  "L2I": {
+    "line_size": 32,
+    "sets": 8,
+    "ways": 4,
+    "mshr_entries": 8,
+    "mshr_waiters_per_entry": 8,
+    "replacement": "srrip",
+    "writeback_entries": 0,
+    "writeback_waiters_per_entry": 0,
+    "fill_mode": "complete_line"
+  },
+  "L1D": {
+    "line_size": 16,
+    "sets": 4,
+    "ways": 2,
+    "mshr_entries": 4,
+    "mshr_waiters_per_entry": 4,
+    "replacement": "tree_plru",
+    "writeback_entries": 4,
+    "writeback_waiters_per_entry": 4,
+    "fill_mode": "complete_line"
+  },
+  "L2D": {
+    "line_size": 32,
+    "sets": 8,
+    "ways": 4,
+    "mshr_entries": 8,
+    "mshr_waiters_per_entry": 8,
+    "replacement": "srrip",
+    "writeback_entries": 8,
+    "writeback_waiters_per_entry": 8,
+    "fill_mode": "complete_line"
+  },
+  "CPU": {
+    "fetch_queue_entries": 8,
+    "pending_data_entries": 8,
+    "completion_queue_entries": 16
+  },
+  "ExecutionUnits": {
+    "ADD": {
+      "latency": 0,
+      "initiation_interval": 1
+    },
+    "SUB": {
+      "latency": 0,
+      "initiation_interval": 1
+    },
+    "AND": {
+      "latency": 0,
+      "initiation_interval": 1
+    },
+    "OR": {
+      "latency": 0,
+      "initiation_interval": 1
+    },
+    "XOR": {
+      "latency": 0,
+      "initiation_interval": 1
+    },
+    "CONTROL": {
+      "latency": 0,
+      "initiation_interval": 1
+    },
+    "AGU": {
+      "latency": 0,
+      "initiation_interval": 1
+    }
+  },
+  "InstructionMemory": {
+    "latency": 8,
+    "max_outstanding": 8,
+    "image_bytes": 4096
+  },
+  "DataMemory": {
+    "latency": 10,
+    "max_outstanding": 8,
+    "image_bytes": 65536
+  }
+}

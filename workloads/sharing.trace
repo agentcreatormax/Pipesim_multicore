@@ -1,0 +1,5 @@
+# earliest_cycle core operation address [value]
+0 0 STORE 0 42
+200 1 LOAD 0
+400 1 STORE 0 99
+600 0 LOAD 0
