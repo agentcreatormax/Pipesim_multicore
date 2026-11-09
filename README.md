@@ -6,7 +6,7 @@ A configurable, cycle-stepped simulator of a shared-memory multicore system, com
 
 The project evolved through successive **CS6600 computer architecture coursework milestones**: processor pipeline and execution, cache hierarchy, branch prediction and speculation, followed by multicore coherence and memory ordering. The final codebase supports both instruction-driven CPU workloads and trace-driven memory experiments.
 
-> **Repository status:** The current public snapshot is missing `framework/pa4/`, which contains required PA4 simulation infrastructure and executable entry points. The implementation files compile, but `make`, `make framework-test`, and `make test` cannot complete until those framework sources are restored from an appropriately distributable version. The commands below describe the intended workflow **after** that dependency is restored; a passing test run is not claimed here.
+> **Validation:** With the PA4 runtime framework included, the integrated project built successfully and passed `make framework-test` and all 25 checks in `make test` in the local validation environment. This result applies to the tested local source snapshot, not an independently verified GitHub checkout.
 
 ## Highlights
 
@@ -51,8 +51,9 @@ The coherent data path is **private data cache → mesh NoC → home directory /
 | `configs/` | Mesh, memory-order, routing, and processor configuration examples |
 | `workloads/`, `tests/` | CPU programs, memory traces, network traffic, and test drivers |
 | `docs/` | Protocol interfaces and counter definitions |
+| `framework/pa4/` | Course-provided multicore simulation runtime, LLC/DRAM and interconnect models, and executable entry points |
 
-**Implementation scope:** This repository includes implementation work in the controllers, routing, scheduling, pipeline, predictor, and instrumentation modules above. Some components—including the LLC/DRAM simulation infrastructure and test harness—are part of the course-provided framework rather than original implementations. The missing `framework/pa4/` directory is essential to building the combined simulator.
+**Implementation scope:** This repository includes implementation work in the controllers, routing, scheduling, pipeline, predictor, and instrumentation modules above. Some components—including the LLC/DRAM simulation infrastructure and test harness—are part of the course-provided framework rather than original implementations. The `framework/pa4/` directory is required for building and running the combined simulator.
 
 ## Requirements
 
@@ -63,7 +64,7 @@ The coherent data path is **private data cache → mesh NoC → home directory /
 
 ## Build and run
 
-> These commands require the missing `framework/pa4/` sources to be restored first. Run them from the repository root. Use output prefixes whose parent directories already exist.
+Run these commands from the repository root after ensuring that the `framework/pa4/` runtime files are present. Use output prefixes whose parent directories already exist.
 
 ```bash
 make -j4
@@ -150,7 +151,7 @@ The included tests cover cache sharing and invalidation, dirty eviction, false s
 - `make framework-test` — framework-level checks.
 - `make test` — trace, memory, network, counter-accounting, and CPU functional tests.
 
-The test targets **have not been validated on this public snapshot**, because the required PA4 framework sources are absent.
+**Local validation:** `make framework-test` passed and `make test` reported **25 passed, 0 failed** on the integrated local source snapshot. Results should be rechecked after publishing to GitHub.
 
 Simulator runs are designed to emit trace files and structured results, including `.results.csv`, `.state.json`, `.counters.json`, and `.observer.json`; CPU runs also produce `.registers.csv`. Generated data and executables are ignored by `.gitignore`.
 
@@ -158,4 +159,4 @@ Simulator runs are designed to emit trace files and structured results, includin
 
 This is an educational architecture simulator, **not a full ISA emulator or production-accurate DDR system**. In particular, TSO implements the assignment's memory-ordering rules rather than the complete x86 memory model. The design models a single private coherent data-cache level, shared LLC/home banks, and simplified single-rank DRAM timing.
 
-Developed in the context of **CS6600** coursework, with successive milestones integrated into the final multicore project. Course-provided scaffolding and models should remain properly attributed; any missing framework code should be restored only if its redistribution is permitted.
+Developed in the context of **CS6600** coursework, with successive milestones integrated into the final multicore project. Course-provided scaffolding and models should remain properly attributed; the course-provided framework should be redistributed only if permitted.
